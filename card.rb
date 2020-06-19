@@ -17,4 +17,3 @@ end
 4.times do
   @rubyji_cards << citizen
 end
-@rubyji_cards.shuffle!

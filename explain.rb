@@ -1,5 +1,9 @@
-def explain_situation
+def new_line
   puts "-"*110
+end
+
+def explain_situation
+  new_line
   puts <<~text
   　貴方の名前は#{@rubyji}。
   　#{@rubyji}は今夢の中にいます、とても悪い夢です。
@@ -7,12 +11,12 @@ def explain_situation
   　eカードで#{@shinanogawa}に勝てば#{@rubyji}は1億ベリカ貰えますが、負ければ#{@rubyji}は地下強制労働1050年を課せられます。
   　とても理不尽ですが、誰かに助けを求める事はできません。
   text
-  puts "-"*110
+  new_line
   puts <<~text
   　#{@shinanogawa}「では始めよう。」
   　#{@rubyji}「自分を救うのは…自分だけ…！」
   text
-  puts "-"*110
+  new_line
 end
 
 def explain_rule
@@ -33,24 +37,24 @@ def explain_rule
   　イカサマを使った場合の効果はランダムです。何が起こるか分かりません。
   　#{@rubyji}にとって悪い効果はありませんが、良い効果もあればいまひとつな効果もあります。
   text
-  puts "-"*110
+  new_line
 end
 
-def get_set?
+def get_ready
   while true do
     puts "　#{@shinanogawa}「#{@rubyji}くん、準備はいいか？」[y/n]"
-    puts "-"*110
+    new_line
     ready = gets.chomp
     if ready == "y"
       puts "　#{@shinanogawa}「では始めよう。」"
       break
     elsif ready == "n"
       puts "　#{@shinanogawa}「もう一度ルール確認だな。」"
-      puts "-"*110
+      new_line
       explain_rule
     else
       puts "　正しい値を入力してください。"
-      puts "-"*110
+      new_line
     end
   end
 end
@@ -63,17 +67,26 @@ def match_begin
     if count.get_position == nil
       break
     elsif count.get_position < 20
-      puts "-"*110
+      rubyji_action = nil
+      new_line
       puts "　第#{count.get_position/5}ゲームの#{count.get_position%5}ターン目です。"
       puts "　#{@shinanogawa}「ではこのカードで勝負しよう。」"
-      puts "-"*110
-      puts "　#{@rubyji}の番です、次の選択肢の中から行動を決めてください。"
+      new_line
+      puts <<~text
+      　#{@shinanogawa}のカードは、「皇帝」が1枚、「市民が」#{5 - count.get_position%5}枚です。
+      　#{@rubyji}のカードは、「奴隷」が1枚、「市民が」#{5 - count.get_position%5}枚です。
+      　#{@rubyji}の番です、次の選択肢の中から行動を決めてください。
+      text
       if fake == 1
+        # イカサマを使う前の行動選択肢
         puts "　1:「市民」のカードを出す　2:「奴隷」のカードを出す　3:イカサマを使う"
-        puts "-"*110
+        new_line
+        rubyji_action = gets.chomp.to_i
+        puts "　#{@rubyji}の選択は#{rubyji_action}です。"
       else
+        # イカサマを使った後の行動選択肢
         puts "　1:「市民」のカードを出す　2:「奴隷」のカードを出す"
-        puts "-"*110
+        new_line
       end
     end
   end

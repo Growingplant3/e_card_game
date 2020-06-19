@@ -33,4 +33,48 @@ def explain_rule
   　イカサマを使った場合の効果はランダムです。何が起こるか分かりません。
   　#{@rubyji}にとって悪い効果はありませんが、良い効果もあればいまひとつな効果もあります。
   text
+  puts "-"*110
+end
+
+def get_set?
+  while true do
+    puts "　#{@shinanogawa}「#{@rubyji}くん、準備はいいか？」[y/n]"
+    puts "-"*110
+    ready = gets.chomp
+    if ready == "y"
+      puts "　#{@shinanogawa}「では始めよう。」"
+      break
+    elsif ready == "n"
+      puts "　#{@shinanogawa}「もう一度ルール確認だな。」"
+      puts "-"*110
+      explain_rule
+    else
+      puts "　正しい値を入力してください。"
+      puts "-"*110
+    end
+  end
+end
+
+def match_begin
+  count = Count.new([6,7,8,9,11,12,13,14,16,17,18,19].to_a)
+  fake = 1
+  while true do
+    count.turn_pass
+    if count.get_position == nil
+      break
+    elsif count.get_position < 20
+      puts "-"*110
+      puts "　第#{count.get_position/5}ゲームの#{count.get_position%5}ターン目です。"
+      puts "　#{@shinanogawa}「ではこのカードで勝負しよう。」"
+      puts "-"*110
+      puts "　#{@rubyji}の番です、次の選択肢の中から行動を決めてください。"
+      if fake == 1
+        puts "　1:「市民」のカードを出す　2:「奴隷」のカードを出す　3:イカサマを使う"
+        puts "-"*110
+      else
+        puts "　1:「市民」のカードを出す　2:「奴隷」のカードを出す"
+        puts "-"*110
+      end
+    end
+  end
 end

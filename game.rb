@@ -3,9 +3,10 @@ require './card'
 require './count'
 require './explain'
 
-count = Count.new((1..3),(1..4))
 explain_situation
 explain_rule
-
-
+get_set?
+match_begin
+# ゲームの結果で分岐が必要。
+puts "ゲームが終わった。"
 exit

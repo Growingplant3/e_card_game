@@ -1,13 +1,18 @@
 class Round
   def initialize
-    @current_position = []
-    counts = (1..3).to_a
-    turns = (1..4).to_a
-    counts.each do |count|
-      turns.each do |turn|
-        position = Position.new(count,turn)
-        @current_position << position
-      end
-    end
+    @@all_positions = (1..12).to_a
+  end
+
+  def self.turn_pass
+    puts "ここが問題"
+    puts $current_position
+    puts @@all_positions
+    $current_position = @@all_positions[0]
+    puts @@all_positions.count
+    @@all_positions.shift
+    puts "aaaaaaa"
+    puts @@all_positions.count
   end
 end
+
+Round.new

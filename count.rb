@@ -8,7 +8,7 @@ class Count
   end
 
   def turn_pass
-    @current_position = @turn[0]
+    @current_position = @turn.first
     @turn.shift
   end
 end

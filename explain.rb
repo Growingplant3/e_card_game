@@ -33,9 +33,6 @@ def explain_rule
   　全てのカードを出し終えた時、勝った回数の多かった方がゲームの勝利となります。
   　2ゲーム先取した方が、eカードの勝者となります。
   　#{@shinanogawa}がどのカードを選ぶのか、#{@rubyji}は推測しなければなりません。
-  　圧倒的に#{@rubyji}の方が不利ですが、#{@rubyji}は1度だけイカサマを使うことができます。
-  　イカサマを使った場合の効果はランダムです。何が起こるか分かりません。
-  　#{@rubyji}にとって悪い効果はありませんが、良い効果もあればいまひとつな効果もあります。
   text
   new_line
 end
@@ -47,6 +44,7 @@ def get_ready
     ready = gets.chomp
     if ready == "y"
       puts "　#{@shinanogawa}「では始めよう。」"
+      puts "　#{@rubyji}「やるしかねぇ！」"
       break
     elsif ready == "n"
       puts "　#{@shinanogawa}「もう一度ルール確認だな。」"
@@ -63,30 +61,46 @@ def match_begin
   count = Count.new([6,7,8,9,11,12,13,14,16,17,18,19].to_a)
   fake = 1
   while true do
-    count.turn_pass
-    if count.get_position == nil
-      break
-    elsif count.get_position < 20
-      rubyji_action = nil
-      new_line
-      puts "　第#{count.get_position/5}ゲームの#{count.get_position%5}ターン目です。"
-      puts "　#{@shinanogawa}「ではこのカードで勝負しよう。」"
-      new_line
-      puts <<~text
-      　#{@shinanogawa}のカードは、「皇帝」が1枚、「市民が」#{5 - count.get_position%5}枚です。
-      　#{@rubyji}のカードは、「奴隷」が1枚、「市民が」#{5 - count.get_position%5}枚です。
-      　#{@rubyji}の番です、次の選択肢の中から行動を決めてください。
-      text
-      if fake == 1
-        # イカサマを使う前の行動選択肢
-        puts "　1:「市民」のカードを出す　2:「奴隷」のカードを出す　3:イカサマを使う"
+    card = Card.new("「皇帝」","「市民」","「奴隷」")
+    while true do
+      count.turn_pass
+      if count.get_position == nil
+        break
+      elsif count.get_position < 20
+        rubyji_action = nil
         new_line
-        rubyji_action = gets.chomp.to_i
-        puts "　#{@rubyji}の選択は#{rubyji_action}です。"
-      else
-        # イカサマを使った後の行動選択肢
+        puts "　第#{count.get_position/5}ゲームの#{count.get_position%5}ターン目です。"
+        puts "　#{@shinanogawa}「ではこのカードで勝負しよう。」"
+        new_line
+        puts <<~text
+        　#{@shinanogawa}のカードは、「皇帝」が1枚、「市民」が#{5 - count.get_position%5}枚です。
+        　#{@rubyji}のカードは、「奴隷」が1枚、「市民が」#{5 - count.get_position%5}枚です。
+        　#{@rubyji}の番です、次の選択肢の中から行動を決めてください。
+        text
         puts "　1:「市民」のカードを出す　2:「奴隷」のカードを出す"
         new_line
+        Card.choice
+        new_line
+        puts <<~text
+        　　　　　　　　　　　　　＼＿丶丶　|
+        　　　　　　　　　　　　　￣＼　　 ￣|／⌒|
+        　　　　　　　　　　　　　⊂二　 　 ./|　 J　．．．．．．
+        　
+        　　＼＿丶丶　|
+        　　￣＼　　 ￣|／⌒|
+        　　⊂二　 　 ./|　 J　．．．．．．
+        text
+        new_line
+        sleep(3)
+        puts "　#{@shinanogawa}のカードは"
+        Card.shinanogawa_show
+        puts "　#{@rubyji}のカードは"
+        Card.rubyji_show
+        Card.draw
+        Card.judge
+        new_line
+        # puts "　ここに結果の状況を書く,分岐⓪引き分けならネクストターンへ①4ターン目なら5ターン目なしで勝敗をつけてネクストゲームへ"
+        # puts "　②勝敗ついたらネクストゲームへ③eカードが勝利で終わったら④eカードが敗北で終わったら"
       end
     end
   end

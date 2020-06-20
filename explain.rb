@@ -1,3 +1,5 @@
+@human = Human.new("ルビジ","信濃川")
+
 def new_line
   puts "-"*110
 end
@@ -5,16 +7,16 @@ end
 def explain_situation
   new_line
   puts <<~text
-  　貴方の名前は#{@rubyji}。
-  　#{@rubyji}は今夢の中にいます、とても悪い夢です。
-  　#{@rubyji}の目の前には#{@shinanogawa}がいて、#{@shinanogawa}とeカードで勝負しなければなりません。
-  　eカードで#{@shinanogawa}に勝てば#{@rubyji}は1億ベリカ貰えますが、負ければ#{@rubyji}は地下強制労働1050年を課せられます。
+  　貴方の名前は#{@human.player_name}。
+  　#{@human.player_name}は今夢の中にいます、とても悪い夢です。
+  　#{@human.player_name}の目の前には#{@human.enemy_name}がいて、#{@human.enemy_name}とeカードで勝負しなければなりません。
+  　eカードで#{@human.enemy_name}に勝てば#{@human.player_name}は1億ベリカ貰えますが、負ければ#{@human.player_name}は地下強制労働1050年を課せられます。
   　とても理不尽ですが、誰かに助けを求める事はできません。
   text
   new_line
   puts <<~text
-  　#{@shinanogawa}「では始めよう。」
-  　#{@rubyji}「自分を救うのは…自分だけ…！」
+  　#{@human.enemy_name}「では始めよう。」
+  　#{@human.player_name}「自分を救うのは…自分だけ…！」
   text
   new_line
 end
@@ -23,7 +25,7 @@ def explain_rule
   puts <<~text
   　eカードのルールを説明します。
   　登場するカードは3種類のみ、「皇帝」「市民」「奴隷」です。
-  　#{@shinanogawa}のカードは「皇帝」が1枚「市民」が4枚、#{@rubyji}のカードは「市民」が4枚「奴隷」が1枚です。
+  　#{@human.enemy_name}のカードは「皇帝」が1枚「市民」が4枚、#{@human.player_name}のカードは「市民」が4枚「奴隷」が1枚です。
   　カードの種類によらず全てのカードの裏面は同じ模様であり、裏面からどの種類のカードかを判断する事はできません。
   　ゲームはターン制で、1ターン毎にお互い1枚ずつカードを出して戦います。
   　1度使用したカードをもう1度使う事はできません。
@@ -32,22 +34,22 @@ def explain_rule
   　ただし「市民」と「市民」は引き分けになります。
   　全てのカードを出し終えた時、勝った回数の多かった方がゲームの勝利となります。
   　2ゲーム先取した方が、eカードの勝者となります。
-  　#{@shinanogawa}がどのカードを選ぶのか、#{@rubyji}は推測しなければなりません。
+  　#{@human.enemy_name}がどのカードを選ぶのか、#{@human.player_name}は推測しなければなりません。
   text
   new_line
 end
 
 def get_ready
   while true do
-    puts "　#{@shinanogawa}「#{@rubyji}くん、準備はいいか？」[y/n]"
+    puts "　#{@human.enemy_name}「#{@human.player_name}くん、準備はいいか？」[y/n]"
     new_line
     ready = gets.chomp
     if ready == "y"
-      puts "　#{@shinanogawa}「では始めよう。」"
-      puts "　#{@rubyji}「やるしかねぇ！」"
+      puts "　#{@human.enemy_name}「では始めよう。」"
+      puts "　#{@human.player_name}「やるしかねぇ！」"
       break
     elsif ready == "n"
-      puts "　#{@shinanogawa}「もう一度ルール確認だな。」"
+      puts "　#{@human.enemy_name}「もう一度ルール確認だな。」"
       new_line
       explain_rule
     else
@@ -70,12 +72,12 @@ def match_begin
         rubyji_action = nil
         new_line
         puts "　第#{count.get_position/5}ゲームの#{count.get_position%5}ターン目です。"
-        puts "　#{@shinanogawa}「ではこのカードで勝負しよう。」"
+        puts "　#{@human.enemy_name}「ではこのカードで勝負しよう。」"
         new_line
         puts <<~text
-        　#{@shinanogawa}のカードは、「皇帝」が1枚、「市民」が#{5 - count.get_position%5}枚です。
-        　#{@rubyji}のカードは、「奴隷」が1枚、「市民が」#{5 - count.get_position%5}枚です。
-        　#{@rubyji}の番です、次の選択肢の中から行動を決めてください。
+        　#{@human.enemy_name}のカードは、「皇帝」が1枚、「市民」が#{5 - count.get_position%5}枚です。
+        　#{@human.player_name}のカードは、「奴隷」が1枚、「市民が」#{5 - count.get_position%5}枚です。
+        　#{@human.player_name}の番です、次の選択肢の中から行動を決めてください。
         text
         puts "　1:「市民」のカードを出す　2:「奴隷」のカードを出す"
         new_line
@@ -93,9 +95,9 @@ def match_begin
         text
         new_line
         sleep(3)
-        puts "　#{@shinanogawa}のカードは"
+        puts "　#{@human.enemy_name}のカードは"
         Card.shinanogawa_show
-        puts "　#{@rubyji}のカードは"
+        puts "　#{@human.player_name}のカードは"
         Card.rubyji_show
         Card.judge
         new_line

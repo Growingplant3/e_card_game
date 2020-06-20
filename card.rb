@@ -4,10 +4,10 @@ class Card
   @shinanogawa_game_win = 0
   @rubyji_game_win = 0
 
-  def initialize(type1,type2,type3)
-    @shinanogawa_cards = [type1]
-    @citizen = type2
-    @rubyji_cards = [type3]
+  def initialize(emperor,citizen,slave)
+    @shinanogawa_cards = [emperor]
+    @citizen = citizen
+    @rubyji_cards = [slave]
     4.times do
       @shinanogawa_cards << @citizen
     end
@@ -64,7 +64,6 @@ class Card
       puts "　引き分け！！"
       puts "　最終ターンのカードは信濃川「皇帝」、ルビジ「奴隷」なのでこのゲームは貴方の勝ちです！！！"
       @rubyji_game_win += 1
-      break
     elsif @@shinanogawa_hands == @@rubyji_hands
       puts "　引き分け！！"
     elsif @@shinanogawa_hands == "「市民」" && @@rubyji_hands == "「奴隷」"

@@ -1,5 +1,5 @@
-require './player'
 require './card'
+require './human'
 require './count'
 require './explain'
 

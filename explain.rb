@@ -79,6 +79,7 @@ def match_begin
         text
         puts "　1:「市民」のカードを出す　2:「奴隷」のカードを出す"
         new_line
+        Card.debug
         Card.choice
         new_line
         puts <<~text
@@ -96,9 +97,13 @@ def match_begin
         Card.shinanogawa_show
         puts "　#{@rubyji}のカードは"
         Card.rubyji_show
-        Card.draw
         Card.judge
         new_line
+        Card.game_win
+        Card.game_lose
+        # 勝敗が決したらゲーム開始のループに戻したい。
+
+
         # puts "　ここに結果の状況を書く,分岐⓪引き分けならネクストターンへ①4ターン目なら5ターン目なしで勝敗をつけてネクストゲームへ"
         # puts "　②勝敗ついたらネクストゲームへ③eカードが勝利で終わったら④eカードが敗北で終わったら"
       end

@@ -4,7 +4,9 @@ require '../lib/card'
 
 class DeckTest < Minitest::Test
   def test_player_deck
-    puts @player_deck
+    @player_deck = Deck.new(name: "ルビジの全カード",player_cards: @player_cards)
+    puts "aaaa"
+    puts @player_deck.show
     # assert_equal "ルビジの全カード", @player_deck.name
     # assert_equal "市民", @player_deck.player_cards.first.name
     # assert_equal 2, @player_deck.player_cards.first.type

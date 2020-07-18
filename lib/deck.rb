@@ -16,6 +16,9 @@ class Deck
     @player_deck
   end
 
+  puts "aaaa"
+  puts @player_deck
   @player_deck = Deck.new(name: "ルビジの全カード",player_cards: @player_cards)
+  puts @player_deck
   @enemy_deck = Deck.new(name: "信濃川の全カード",enemy_cards: @enemy_cards)
 end

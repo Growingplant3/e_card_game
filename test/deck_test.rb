@@ -8,7 +8,7 @@ class DeckTest < Minitest::Test
     enemy_deck = Deck.new(name: "信濃川の全カード",enemy_cards: @enemy_cards)
     assert_equal "ルビジの全カード", player_deck.name
     assert_equal "信濃川の全カード", enemy_deck.name
-    # puts player_deck.player_cards.current_card_name
-    # puts enemy_deck.enemy_cards.name.current_card_name
+    puts player_deck.player_cards
+    puts enemy_deck.enemy_cards
   end
 end

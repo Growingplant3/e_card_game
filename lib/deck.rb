@@ -10,11 +10,12 @@ class Deck
     slave = Card.new(name: "奴隷",type: 1)
     @player_cards = [citizen,citizen,citizen,citizen,slave]
     @enemy_cards = [citizen,citizen,citizen,citizen,emperor]
-    @player_deck = Deck.new(name: "ルビジの全カード",player_cards: @player_cards)
-    @enemy_deck = Deck.new(name: "信濃川の全カード",enemy_cards: @enemy_cards)
   end
 
   def show
     @player_deck
   end
+
+  @player_deck = Deck.new(name: "ルビジの全カード",player_cards: @player_cards)
+  @enemy_deck = Deck.new(name: "信濃川の全カード",enemy_cards: @enemy_cards)
 end

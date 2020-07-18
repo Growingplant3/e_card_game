@@ -20,4 +20,11 @@ class DeckTest < Minitest::Test
     assert_equal "皇帝", @enemy_deck.enemy_cards.last.name
     assert_equal 3, @enemy_deck.enemy_cards.last.type
   end
+
+  def all_cards_show
+    @player_deck = Deck.new(name: "ルビジの全カード",player_cards: @player_cards)
+    @enemy_deck = Deck.new(name: "信濃川の全カード",enemy_cards: @enemy_cards)
+    puts "aaaa"
+    puts Deck.show
+  end
 end

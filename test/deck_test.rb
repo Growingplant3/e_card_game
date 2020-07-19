@@ -24,8 +24,17 @@ class DeckTest < Minitest::Test
 
   def test_deck_shuffle
     @enemy_deck = Deck.new(name: "信濃川の全カード",enemy_cards: @enemy_cards)
-    puts "aaaa"
+    emperor_count = 0
+    citizen_count = 0
+    slave_count = 0
+    @enemy_deck.mix.each do |card|
+      emperor_count += 1 if card.name == "皇帝"
+      citizen_count += 1 if card.name == "市民"
+      slave_count += 1 if card.name == "奴隷"
+    end
+    assert_equal 1, emperor_count
+    assert_equal 4, citizen_count
+    assert_equal 0, slave_count
     assert_equal 5, @enemy_deck.mix.length
-    assert_equal @enemy_deck.object_id, @enemy_deck.mix.object_id
   end
 end

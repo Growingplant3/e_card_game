@@ -11,4 +11,8 @@ class Deck
     @player_cards = [citizen,citizen,citizen,citizen,slave]
     @enemy_cards = [citizen,citizen,citizen,citizen,emperor]
   end
+
+  def mix
+    @enemy_cards.shuffle!
+  end
 end

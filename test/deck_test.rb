@@ -21,4 +21,11 @@ class DeckTest < Minitest::Test
     assert_equal 3, @enemy_deck.enemy_cards.last.type
     assert_equal 5, @enemy_deck.enemy_cards.length
   end
+
+  def test_deck_shuffle
+    @enemy_deck = Deck.new(name: "信濃川の全カード",enemy_cards: @enemy_cards)
+    puts "aaaa"
+    assert_equal 5, @enemy_deck.mix.length
+    assert_equal @enemy_deck.object_id, @enemy_deck.mix.object_id
+  end
 end

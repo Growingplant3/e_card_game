@@ -11,9 +11,4 @@ class Deck
     @player_cards = [citizen,citizen,citizen,citizen,slave]
     @enemy_cards = [citizen,citizen,citizen,citizen,emperor]
   end
-
-  def self.show
-    @player_deck
-    @enemy_deck
-  end
 end

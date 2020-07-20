@@ -29,7 +29,6 @@ class DeckTest < Minitest::Test
   end
 
   def test_mix
-    puts "aaaa"
     emperor = Card.new(name: "皇帝", type: 3)
     citizen = Card.new(name: "市民", type: 2)
     @enemy_cards = [citizen,citizen,citizen,citizen,emperor]
@@ -37,9 +36,6 @@ class DeckTest < Minitest::Test
     emperor_count = 0
     citizen_count = 0
     slave_count = 0
-    puts "bbbb"
-    puts @enemy_deck.cards
-    puts "cccc"
     @enemy_deck.mix.each do |card|
       if card.name == "皇帝"
         emperor_count += 1
@@ -53,12 +49,5 @@ class DeckTest < Minitest::Test
     assert_equal 4, citizen_count
     assert_equal 0, slave_count
     assert_equal 5, @enemy_deck.mix.length
-    puts "zzzz"
   end
-
-  # 他のクラスに移行する
-  # def test_use_card
-  #   @enemy_deck = Deck.new(name: "信濃川の全カード",enemy_cards: @enemy_cards)
-  #   assert_equal 4, @enemy_deck.use_card.length
-  # end
 end

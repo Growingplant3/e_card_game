@@ -1,8 +1,8 @@
 class Participant
-  attr_accessor :name, :deck
+  attr_reader :name
+  attr_accessor :deck
 
   def initialize(args)
     @name = args[:name]
-    @deck = args[:deck]
   end
 end

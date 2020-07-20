@@ -6,6 +6,6 @@ class Match
   end
 
   def turn_pass
-    @turn -= 1
+    @turn += 1
   end
 end

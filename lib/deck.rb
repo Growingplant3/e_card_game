@@ -5,19 +5,21 @@ class Deck
 
   def initialize(args)
     @cards = args[:cards]
-    emperor = Card.new(name: "皇帝",type: 3)
-    citizen = Card.new(name: "市民",type: 2)
-    slave = Card.new(name: "奴隷",type: 1)
-    # @player_cards = [citizen,citizen,citizen,citizen,slave]
-    # @enemy_cards = [citizen,citizen,citizen,citizen,emperor]
+    # @player_cards
+    @enemy_cards
   end
 
   def mix
-    return @enemy_cards.shuffle!
+    puts "嘘？"
+    puts @enemy_cards
+    puts "嘘か真琴か"
+    @enemy_cards.shuffle!
+    puts "本当"
   end
 
-  def use_card
-    @enemy_cards.shift
-    return @enemy_cards
-  end
+  # 別のクラスへ移動予定
+  # def use_card
+  #   @enemy_cards.shift
+  #   @enemy_cards
+  # end
 end

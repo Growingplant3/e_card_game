@@ -5,13 +5,15 @@ class Deck
 
   def initialize(args)
     @cards = args[:cards]
-    # @player_cards
+    @player_deck
+    @player_cards
+    @enemy_deck
     @enemy_cards
   end
 
   def mix
     puts "嘘？"
-    @enemy_deck.cards
+    # @enemy_deck.cards
     puts "嘘か誠か"
     @enemy_deck.cards.shuffle!
     puts "本当"

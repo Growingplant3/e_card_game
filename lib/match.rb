@@ -1,14 +1,11 @@
-class Count
-  def initialize(turn)
-    @turn = turn
-  end
+class Match
+  attr_accessor :turn
 
-  def get_position
-    @current_position
+  def initialize(args)
+    @turn = args[:turn]
   end
 
   def turn_pass
-    @current_position = @turn[0]
-    @turn.shift
+    @turn -= 1
   end
 end

@@ -11,9 +11,9 @@ class Deck
 
   def mix
     puts "嘘？"
-    puts @enemy_cards
-    puts "嘘か真琴か"
-    @enemy_cards.shuffle!
+    @enemy_deck.cards
+    puts "嘘か誠か"
+    @enemy_deck.cards.shuffle!
     puts "本当"
   end
 

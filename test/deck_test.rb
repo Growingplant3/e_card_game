@@ -38,7 +38,7 @@ class DeckTest < Minitest::Test
     citizen_count = 0
     slave_count = 0
     puts "bbbb"
-    puts @enemy_cards
+    puts @enemy_deck.cards
     puts "cccc"
     @enemy_deck.mix.each do |card|
       if card.name == "皇帝"

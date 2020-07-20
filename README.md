@@ -34,7 +34,7 @@
   - player/enemyインスタンスを生成
   - name/deckプロパティを持つ
   - nameプロパティは初期化の際に自動入力する
-  - playerインスタンスはdeckプロパディに、@player_deckを保持する
+  - playerインスタンスはdeckプロパティに、@player_deckを保持する
   - enemyインスタンスはdeckプロパティに、@enemy_deckを保持する
 - Deckクラス
   - player_deck/enemy_deckインスタンスを生成
@@ -79,3 +79,4 @@ minitestを使用して作成しました
 ## 学び
 classやアクセサを使ってみました。
 **TODO**
+他にも記載する

@@ -11,6 +11,7 @@ def current_turn
   #{@enemy.name}のカードは、"皇帝"が1枚"市民"が#{5-@match.turn}枚です。
   #{@player.name}の番です、次の選択肢の中から行動を決めてください。
   1:"市民"のカードを出す　2:"奴隷"のカードを出す
+  ※半角文字で入力してください。※
   text
   new_line
 end
@@ -121,7 +122,7 @@ def match_begin
     while true do
       current_turn
       player_action = gets.chomp
-      if player_action == "1" || player_action == "１"
+      if player_action == SELECT_CITIZEN
         puts <<~text
         #{@player.name}は"市民"のカードを出した！
         text
@@ -160,7 +161,7 @@ def match_begin
           lose_flag
           return
         end
-      elsif player_action == "2" || player_action == "２"
+      elsif player_action == SELECT_SLAVE
         puts <<~text
         #{@player.name}は"奴隷"のカードを出した！
         text
@@ -188,7 +189,7 @@ def match_begin
           read_wait
           return
         end
-      elsif player_action == "3" || player_action == "３"
+      elsif player_action == SELECT_FAKE
         puts "#{@player.name}「この圧倒的不利な状況をどうする、ただただ運否天賦で勝負していいのか？」"
         read_wait
         puts "#{@player.name}「イカサマをするしかねぇ！」"

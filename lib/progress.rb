@@ -229,14 +229,12 @@ end
 
 # コンティニュー文章
 def continue?
-  while true do
-    new_line
-    puts "もう一度挑戦する？[y]"
-    continue = gets.chomp
-    if continue == "y"
-      break
-    else
-      exit
-    end
+  new_line
+  puts "もう一度挑戦する？[y]"
+  continue = gets.chomp
+  if continue == "y"
+    break
+  else
+    exit
   end
 end

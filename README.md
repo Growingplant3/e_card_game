@@ -79,7 +79,7 @@ minitestで記述しました
   - $ ruby participant.rb
 
 ## 学び
-classやattr_readerを使ってみました。
+classやattr_readerを使ってみました。<br>
 インスタンス変数やインスタンスメソッドの使い方を理解しました。
 
 ## 備考

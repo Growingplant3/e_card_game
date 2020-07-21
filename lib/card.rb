@@ -1,8 +1,7 @@
 class Card
-  attr_reader :name, :type
+  attr_reader :name
 
   def initialize(args)
     @name = args[:name]
-    @type = args[:type]
   end
 end

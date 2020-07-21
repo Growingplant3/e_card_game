@@ -1,7 +1,7 @@
 require '../lib/card'
 
 class Deck
-  attr_accessor :cards
+  attr_reader :cards
 
   def initialize(args)
     @cards = args[:cards]

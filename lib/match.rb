@@ -1,5 +1,5 @@
 class Match
-  attr_accessor :turn
+  attr_reader :turn
 
   def initialize(args)
     @turn = args[:turn]

@@ -4,8 +4,7 @@ require '../lib/participant'
 
 class DeckTest < Minitest::Test
   def test_participant_player
-    @player_deck = Deck.new(cards: @player_cards)
-    @player = Participant.new(name: "ルビジ", deck: @player_deck)
+    @player = Participant.new(name: "ルビジ")
     assert_equal "ルビジ", @player.name
   end
 

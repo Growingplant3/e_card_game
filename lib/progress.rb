@@ -3,6 +3,18 @@ def new_line
   puts "-"*110
 end
 
+# 現在ターンと残りデッキ状況を表示する文章
+def current_turn
+  new_line
+  puts <<~text
+  第#{@match.turn}ターンです。
+  #{@enemy.name}のカードは、"皇帝"が1枚"市民"が#{5-@match.turn}枚です。
+  #{@player.name}の番です、次の選択肢の中から行動を決めてください。
+  1:"市民"のカードを出す　2:"奴隷"のカードを出す
+  text
+  new_line
+end
+
 # 既読待ち機能
 def read_wait
   sleep 2
@@ -107,14 +119,7 @@ def match_begin
     @match.turn_pass
     puts "#{@enemy.name}「このカードで勝負しよう。」"
     while true do
-      new_line
-      puts <<~text
-      第#{@match.turn}ターンです。
-      #{@enemy.name}のカードは、"皇帝"が1枚"市民"が#{5-@match.turn}枚です。
-      #{@player.name}の番です、次の選択肢の中から行動を決めてください。
-      1:"市民"のカードを出す　2:"奴隷"のカードを出す
-      text
-      new_line
+      current_turn
       player_action = gets.chomp
       if player_action == "1" || player_action == "１"
         puts <<~text

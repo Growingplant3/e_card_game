@@ -11,7 +11,7 @@ def current_turn
   #{@enemy.name}のカードは、"皇帝"が1枚"市民"が#{5-@match.turn}枚です。
   #{@player.name}の番です、次の選択肢の中から行動を決めてください。
   1:"市民"のカードを出す　2:"奴隷"のカードを出す
-  ※半角文字で入力してください。※
+  ※※※半角数字で入力してください※※※
   text
   new_line
 end
@@ -159,6 +159,7 @@ def match_begin
           この勝負は#{@enemy.name}の勝利です！
           text
           lose_flag
+          read_wait
           return
         end
       elsif player_action == SELECT_SLAVE
@@ -232,9 +233,7 @@ def continue?
   new_line
   puts "もう一度挑戦する？[y]"
   continue = gets.chomp
-  if continue == "y"
-    break
-  else
+  if continue != "y"
     exit
   end
 end

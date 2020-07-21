@@ -16,6 +16,10 @@ while true do
   @enemy = Participant.new(name: "信濃川", deck: @enemy_deck)
   @player_win = 0
   @enemy_win = 0
+  # マジックナンバー
+  SELECT_CITIZEN = "1"
+  SELECT_SLAVE = "2"
+  SELECT_FAKE = "3"
 
   explain_situation
   explain_rule
